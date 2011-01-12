@@ -6,3 +6,7 @@ configure
 lib/apex/scores.*
 *.out
 lib/save/1000.*
+*.dmg
+reposband.app/*
+src/reposband.o.i386
+src/reposband.o.ppc
