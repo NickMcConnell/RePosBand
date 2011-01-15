@@ -395,7 +395,8 @@ char index_to_label(int i)
 	/* Indexes for "equip" are offset */
 	else
 	{
-		/* Super convert -Simon */
+		/* THIS DOESN'T WORK AT ALL -Simon */
+		//msg_format("starting conversion with slot %d", i);
 		if (i >= (INVEN_FEET + rp_ptr->boot_slots))
 			i -= (INVEN_TOTAL - INVEN_FEET - rp_ptr->boot_slots);
 		if (i >= (INVEN_HANDS + rp_ptr->glove_slots))
@@ -420,6 +421,7 @@ char index_to_label(int i)
 			i -= (INVEN_BOW - INVEN_WIELD - rp_ptr->melee_slots);
 		if (i >= INVEN_WIELD)
 			i -= INVEN_WIELD;
+		//msg_format("ending conversation at slot %d", i);
 		return (I2A(i));
 	}
 }
@@ -458,7 +460,7 @@ s16b label_to_equip(int c)
 	int i;
 
 	/* Convert */
-	i = A2I(c) + INVEN_WIELD; //(islower((unsigned char)c) ? A2I(c) : -1) + INVEN_WIELD;
+	i = A2I(c) + INVEN_WIELD;
 	
 	/* Super convert -Simon */
 	if (i >= (INVEN_WIELD + rp_ptr->melee_slots))
@@ -871,8 +873,8 @@ cptr describe_use(int i)
 		p = "wearing on your hands";
 	if ((i >= INVEN_FEET) && (i < INVEN_TOTAL))
 		p = "wearing on your feet";
-	else
-		p = "carrying in your pack"; 
+	//else
+	//	p = sprintf("ERROR: slot number %d", (char *)i); 
 
 		/* Return the result */
 	return p;
